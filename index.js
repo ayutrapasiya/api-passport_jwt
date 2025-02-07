@@ -1,19 +1,21 @@
 const express = require("express");
 const port = 8002;
 const app = express();
-// const db = require("./config/db");
+const Path = require("path");
+const db = require("./config/db");
 const passport = require("passport");
 const jwtPassport = require("./config/passport_jwt_strategy");
 const session = require("express-session");
 
+// const mongoose = require("mongoose");
 
-const mongoose = require('mongoose');
+// mongoose.connect("mongodb+srv://ayushitrapasiya:h4ZTJelyZSrrm8KH@cluster0.29goa.mongodb.net/ApiData")
+//   .then(console.log("db is connect..."))
+//   .catch((err) => {
+//     console.log("db is not connect..");
+//   });
 
-mongoose.connect("mongodb+srv://ayushitrapasiya:h4ZTJelyZSrrm8KH@cluster0.29goa.mongodb.net/ApiData").then(console.log("db is connect...")).catch((err) => {
-console.log("db is not connect..")
-})
-
-
+app.use("/uploads",express.static( Path.join(__dirname, "uploads")));
 
 app.use(express.urlencoded());
 
